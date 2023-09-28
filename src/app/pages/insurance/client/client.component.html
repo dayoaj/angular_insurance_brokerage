@@ -1,0 +1,72 @@
+<div class="h-28 bg-light-primary rounded p-y-30 p-x-24 m-b-30 overflow-hidden ng-star-inserted">
+  <div class="row">
+    <div class="col-sm-8">
+      <h4 class="page-title m-0 f-s-30 f-w-600 m-b-16"> Clients </h4>
+      <div class="d-flex align-items-center overflow-hidden"><!----></div>
+    </div>
+    <div class="col-sm-4 text-right position-relative">
+      <div class="absolute -top-5 right-[19px] breadcrumb-icon"><img src="/assets/images/backgrounds/ChatBc.png"
+          alt="breadcrumb" width="165"></div>
+    </div>
+  </div>
+</div>
+<!-- ============================================================== -->
+<!-- Simple four boxes Row -->
+<!-- ============================================================== -->
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <dx-data-grid id="grid" [dataSource]="dataSource" [showBorders]="true" [remoteOperations]="false"
+      [repaintChangesOnly]="true">
+      <!-- <dx-data-grid id="grid" [dataSource]="dataSource" [repaintChangesOnly]="true" [showBorders]="true" [remoteOperations]="false"> -->
+      <dxo-scrolling mode="virtual"></dxo-scrolling>
+      <dxo-editing mode="popup" [refreshMode]="refreshMode" [allowAdding]="true" [allowUpdating]="true"
+        [allowDeleting]="true">
+        <dxo-popup title="Client Information" [showTitle]="true" [width]="800" [height]="450">
+        </dxo-popup>
+        <dxo-form>
+          <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+            <dxi-item dataField="client_id" [editorOptions]="clientEditorOptions"></dxi-item>
+            <dxi-item dataField="first_name"></dxi-item>
+            <dxi-item dataField="last_name"></dxi-item>
+            <dxi-item dataField="other_name"></dxi-item>
+            <dxi-item dataField="email"><dxo-label template="email"></dxo-label></dxi-item>
+            <!-- <dxi-item dataField="date_of_birth" editorType="dxDateBox" [editorOptions]="dobEditorOptions">
+              <dxo-label template="date"></dxo-label>
+            </dxi-item> -->
+            <dxi-item dataField="date_of_birth" [editorOptions]="dobEditorOptions"></dxi-item>
+            <dxi-item dataField="phone_num"><dxo-label template="phone"></dxo-label></dxi-item>
+            <!-- <dxi-item dataField="sales_agent_id" editorType="dxSelectBox" [editorOptions]="salesAgentEditorOptions">
+            </dxi-item> -->
+            <dxi-item dataField="sales_agent_id">
+            </dxi-item>
+            <!-- <dxi-item dataField="sales_agent_id" [editorOptions]="salesAgentEditorOptions">
+            </dxi-item> -->
+            <!-- <dx-select-box dataField="sales_agent_id" [dataSource]="salesAgentsData"
+              [inputAttr]="{ 'aria-label': 'Sales Agents' }" displayExpr="first_name" valueExpr="id"
+              [value]=""></dx-select-box> -->
+            <dxi-item dataField="company_name"></dxi-item>
+            <dxi-item dataField="residential_address"></dxi-item>
+          </dxi-item>
+        </dxo-form>
+      </dxo-editing>
+
+
+      <dxi-column dataField="client_id" [visible]="false"></dxi-column>
+      <dxi-column dataField="first_name"></dxi-column>
+      <dxi-column dataField="last_name"></dxi-column>
+      <dxi-column dataField="other_name" [visible]="false"></dxi-column>
+      <dxi-column dataField="email"></dxi-column>
+      <dxi-column dataField="date_of_birth" dataType="date"></dxi-column>
+      <dxi-column dataField="phone_num"></dxi-column>
+      <dxi-column dataField="company_name"></dxi-column>
+      <dxi-column dataField="residential_address" [visible]="false"></dxi-column>
+      <dxi-column dataField="sales_agent_id" caption="Sales Agent">
+        <!-- <dxi-column dataField="sales_agent_id" caption="Sales Agent" [visible]="false"> -->
+        <dxo-lookup [dataSource]="salesAgentsData" displayExpr="first_name" valueExpr="id">
+        </dxo-lookup>
+      </dxi-column>
+      <!-- <dxi-column dataField="sales_agent_names"></dxi-column> -->
+    </dx-data-grid>
+
+  </mat-card-content>
+</mat-card>

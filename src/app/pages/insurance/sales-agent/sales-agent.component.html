@@ -1,0 +1,37 @@
+<div class="h-28 bg-light-primary rounded p-y-30 p-x-24 m-b-30 overflow-hidden ng-star-inserted">
+  <div class="row">
+    <div class="col-sm-8">
+      <h4 class="page-title m-0 f-s-30 f-w-600 m-b-16"> Sales Agents </h4>
+      <div class="d-flex align-items-center overflow-hidden"><!----></div>
+    </div>
+    <div class="col-sm-4 text-right position-relative">
+      <div class="absolute -top-5 right-[19px] breadcrumb-icon"><img src="/assets/images/backgrounds/ChatBc.png"
+          alt="breadcrumb" width="165"></div>
+    </div>
+  </div>
+</div>
+<!-- ============================================================== -->
+<!-- Simple four boxes Row -->
+<!-- ============================================================== -->
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <dx-data-grid id="grid" [dataSource]="dataSource" [showBorders]="true" [remoteOperations]="false"
+      [repaintChangesOnly]="true">
+      <!-- <dx-data-grid id="grid" [dataSource]="dataSource" [repaintChangesOnly]="true" [showBorders]="true" [remoteOperations]="false"> -->
+      <dxo-scrolling mode="virtual"></dxo-scrolling>
+      <dxo-editing mode="row" [refreshMode]="refreshMode" [allowAdding]="true" [allowUpdating]="true"
+        [allowDeleting]="true">
+      </dxo-editing>
+
+
+      <dxi-column dataField="first_name"></dxi-column>
+      <dxi-column dataField="last_name"></dxi-column>
+      <dxi-column dataField="email"></dxi-column>
+      <dxi-column dataField="commission" dataType="number">
+        <dxo-format type="percent" />
+      </dxi-column>
+
+    </dx-data-grid>
+
+  </mat-card-content>
+</mat-card>
